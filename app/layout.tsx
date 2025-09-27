@@ -12,6 +12,11 @@ export const metadata: Metadata = {
   generator: "Cristopher Gutierrez",
   authors: [{ name: "Cristopher Gutierrez", email: "cgch_1996@hotmail.com" }],
   creator: "Cristopher Gutierrez",
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
 }
 
 export default function RootLayout({
