@@ -89,16 +89,6 @@ export function VisitorAnalytics() {
             <Users className="w-3 h-3" />
             <span>Visitantes: 0</span>
           </div>
-          <div className="text-xs text-accent mt-1">
-            <a 
-              href="https://vercel.com/dashboard" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-green-400 hover:text-green-300 underline"
-            >
-              Ver analytics en Vercel
-            </a>
-          </div>
         </div>
       </Card>
     )
@@ -134,7 +124,7 @@ export function VisitorAnalytics() {
                 Datos en tiempo real
               </div>
             )}
-            {isExpanded && (
+            {isExpanded && stats.totalVisitors > 0 && (
               <div className="mt-3 pt-3 border-t border-border">
                 <div className="text-xs text-accent mb-2">
                   <a 
