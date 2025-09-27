@@ -47,6 +47,8 @@ export default function Home() {
   const loadTodayEphemeris = async () => {
     try {
       setLoading(true)
+      setError(null) // Limpiar errores previos
+      
       const response = await fetch('/api/generate-ephemeris')
       
       if (!response.ok) {
@@ -57,6 +59,7 @@ export default function Home() {
       
       if (data.success && data.data) {
         setTodayEphemeris(data.data)
+        setError(null) // Sin errores si se carga correctamente
       } else {
         // Si no hay efeméride en la base de datos, usar una por defecto
         setTodayEphemeris({
@@ -72,10 +75,11 @@ export default function Home() {
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString()
         })
+        setError(null) // No es un error, es el modo offline
       }
     } catch (err) {
       console.error('Error cargando efeméride:', err)
-      setError('Error cargando efeméride del día')
+      setError('Modo offline - Usando efeméride de respaldo')
       
       // Efeméride de respaldo
       setTodayEphemeris({
@@ -183,9 +187,9 @@ export default function Home() {
           <Card className="bg-card border-border p-4 terminal-container">
             <div className="text-accent mb-2 relative z-10">[ESTADO]</div>
             <div className="text-primary relative z-10">
-              ● ONLINE
+              {error ? '● OFFLINE' : '● ONLINE'}
               <br />
-              {error ? 'Error de conexión' : 'Sincronizado'}
+              {error || 'Sincronizado'}
             </div>
           </Card>
         </div>
