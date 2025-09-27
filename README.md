@@ -157,7 +157,7 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 ## 👨‍💻 Autor
 
 **Cristopher Gutierrez**
-- Email: cgch_1996@hotmail.com
+- Email: [cgch_1996@hotmail.com](mailto:cgch_1996@hotmail.com)
 - GitHub: [@CristopherG19](https://github.com/CristopherG19)
 
 ## 🙏 Agradecimientos

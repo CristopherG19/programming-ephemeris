@@ -96,30 +96,6 @@ export default function Home() {
     }
   }
 
-  const generateTomorrowEphemeris = async () => {
-    try {
-      setLoading(true)
-      const response = await fetch('/api/generate-ephemeris', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ action: 'tomorrow' })
-      })
-
-      if (response.ok) {
-        const data = await response.json()
-        if (data.success) {
-          alert('Efeméride de mañana generada exitosamente!')
-        }
-      }
-    } catch (err) {
-      console.error('Error generando efeméride:', err)
-      alert('Error generando efeméride de mañana')
-    } finally {
-      setLoading(false)
-    }
-  }
 
   const getCategoryColor = (event: string) => {
     if (event.includes('Internet') || event.includes('ARPANET')) return 'INTERNET'
@@ -214,30 +190,12 @@ export default function Home() {
           </Card>
         </div>
 
-        {/* Botones de control */}
-        <div className="mt-8 text-center">
-          <button
-            onClick={generateTomorrowEphemeris}
-            disabled={loading}
-            className="bg-green-600 hover:bg-green-700 disabled:bg-gray-600 text-white px-6 py-2 rounded font-mono text-sm mr-4"
-          >
-            {loading ? 'Generando...' : 'Generar Efeméride de Mañana'}
-          </button>
-          
-          <button
-            onClick={loadTodayEphemeris}
-            disabled={loading}
-            className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 text-white px-6 py-2 rounded font-mono text-sm"
-          >
-            {loading ? 'Cargando...' : 'Recargar Efeméride de Hoy'}
-          </button>
-        </div>
 
         {/* Footer */}
         <div className="mt-8 text-center text-muted-foreground font-mono text-xs">
-          <div className="mb-2">{">"} Desarrollado con ❤️ por Cristopher Gutierrez</div>
+          <div className="mb-2">{">"} Desarrollado con ❤️ por <a href="https://github.com/CristopherG19" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 underline">Cristopher Gutierrez</a></div>
           <div>Sistema de efemérides diarias • Generación automática con IA</div>
-          <div className="mt-1">© 2024 Cristopher Gutierrez • cgch_1996@hotmail.com</div>
+          <div className="mt-1">© 2024 Cristopher Gutierrez • <a href="mailto:cgch_1996@hotmail.com" className="text-green-400 hover:text-green-300 underline">cgch_1996@hotmail.com</a></div>
         </div>
       </div>
     </main>
