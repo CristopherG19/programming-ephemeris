@@ -127,12 +127,12 @@ export class AIEphemerisGenerator {
    */
   public async getEphemerisForDate(date: Date): Promise<EphemerisData | null> {
     try {
+      // Buscar efeméride por día y mes (no por año)
       const { data, error } = await supabase
         .from('ephemerides')
         .select('*')
         .eq('day', date.getDate())
         .eq('month', date.getMonth() + 1)
-        .eq('year', date.getFullYear())
         .single()
 
       if (error) {
