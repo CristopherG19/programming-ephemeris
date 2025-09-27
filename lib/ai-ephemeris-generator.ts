@@ -9,6 +9,10 @@ interface EphemerisData {
   historical_day: number
   historical_month: number
   historical_year: number
+  detailed_info?: string
+  sources?: string[]
+  category?: string
+  impact?: string
 }
 
 // Base de datos de efemérides históricas verificadas
@@ -53,6 +57,26 @@ const verifiedEphemerides: Record<string, EphemerisData[]> = {
   '01-10': [
     { day: 10, month: 1, year: 2001, event: 'Se lanza la primera versión de Wikipedia, revolucionando el acceso al conocimiento en línea.', display_date: '2001-01-10', historical_day: 10, historical_month: 1, historical_year: 2001 },
     { day: 10, month: 1, year: 2007, event: 'Apple presenta el iPhone, cambiando para siempre la industria de los smartphones.', display_date: '2007-01-10', historical_day: 10, historical_month: 1, historical_year: 2007 }
+  ],
+  '09-27': [
+    { 
+      day: 27, 
+      month: 9, 
+      year: 1969, 
+      event: 'Se envía el primer mensaje a través de ARPANET entre UCLA y Stanford, marcando el nacimiento de Internet.', 
+      display_date: '1969-09-27', 
+      historical_day: 27, 
+      historical_month: 9, 
+      historical_year: 1969,
+      category: 'INTERNET',
+      detailed_info: 'El 29 de octubre de 1969, a las 22:30 horas, el estudiante de UCLA Charley Kline intentó enviar el mensaje "LOGIN" a la computadora de Stanford. Aunque solo se transmitieron las letras "LO" antes de que el sistema se colapsara, este momento histórico marcó el nacimiento de la red que eventualmente se convertiría en Internet. ARPANET (Advanced Research Projects Agency Network) fue desarrollada por el Departamento de Defensa de Estados Unidos como una red de comunicación descentralizada que pudiera sobrevivir a ataques nucleares.',
+      impact: 'Este evento sentó las bases para la revolución digital del siglo XXI, permitiendo la comunicación global instantánea, el comercio electrónico, las redes sociales y la transformación de prácticamente todos los aspectos de la vida moderna.',
+      sources: [
+        'https://www.darpa.mil/about-us/timeline/arpanet',
+        'https://www.internethalloffame.org/internet-history/birth-internet',
+        'https://www.computerhistory.org/internethistory/1960s/'
+      ]
+    }
   ]
   // Agregar más fechas según sea necesario
 }

@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react"
 import { Card } from "@/components/ui/card"
+import { EphemerisDetails } from "@/components/ephemeris-details"
+import { VisitorAnalytics } from "@/components/visitor-analytics"
 
 interface EphemerisData {
   id: number
@@ -15,6 +17,10 @@ interface EphemerisData {
   historical_year: number
   created_at: string
   updated_at: string
+  detailed_info?: string
+  sources?: string[]
+  category?: string
+  impact?: string
 }
 
 export default function Home() {
@@ -161,11 +167,19 @@ export default function Home() {
                 {">"} Presiona F5 para actualizar o espera hasta mañana para la siguiente efeméride
               </div>
             </div>
+            
+            {/* Detalles expandibles */}
+            <EphemerisDetails
+              detailed_info={todayEphemeris.detailed_info}
+              impact={todayEphemeris.impact}
+              sources={todayEphemeris.sources}
+              category={todayEphemeris.category}
+            />
           </Card>
         )}
 
         {/* Información del sistema */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm font-mono">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-sm font-mono">
           <Card className="bg-card border-border p-4 terminal-container">
             <div className="text-accent mb-2 relative z-10">[SISTEMA]</div>
             <div className="text-muted-foreground relative z-10">
@@ -192,6 +206,8 @@ export default function Home() {
               {error || 'Sincronizado'}
             </div>
           </Card>
+
+          <VisitorAnalytics />
         </div>
 
 
