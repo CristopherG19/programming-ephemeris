@@ -79,6 +79,31 @@ export function VisitorAnalytics() {
 
   if (!stats) return null
 
+  // En producción, si no hay datos, mostrar un componente más simple
+  if (isProduction && stats.totalVisitors === 0) {
+    return (
+      <Card className="bg-card border-border p-4 terminal-container">
+        <div className="text-accent mb-2 font-mono text-sm">[ANALYTICS]</div>
+        <div className="text-muted-foreground text-sm">
+          <div className="flex items-center space-x-2">
+            <Users className="w-3 h-3" />
+            <span>Visitantes: 0</span>
+          </div>
+          <div className="text-xs text-accent mt-1">
+            <a 
+              href="https://vercel.com/dashboard" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-green-400 hover:text-green-300 underline"
+            >
+              Ver analytics en Vercel
+            </a>
+          </div>
+        </div>
+      </Card>
+    )
+  }
+
   return (
     <Card className="bg-card border-border p-4 terminal-container">
       <div className="flex items-center justify-between mb-2">
@@ -104,12 +129,11 @@ export function VisitorAnalytics() {
               <Eye className="w-3 h-3" />
               <span>Total: {stats?.totalVisitors || 0}</span>
             </div>
-            <div className="text-xs text-accent mt-2">
-              {stats?.totalVisitors === 0 ? 
-                "Analytics activándose..." : 
-                "Datos en tiempo real"
-              }
-            </div>
+            {stats?.totalVisitors > 0 && (
+              <div className="text-xs text-accent mt-2">
+                Datos en tiempo real
+              </div>
+            )}
             {isExpanded && (
               <div className="mt-3 pt-3 border-t border-border">
                 <div className="text-xs text-accent mb-2">
