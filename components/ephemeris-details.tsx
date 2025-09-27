@@ -20,7 +20,12 @@ export function EphemerisDetails({
 }: EphemerisDetailsProps) {
   const [isExpanded, setIsExpanded] = useState(false)
 
-  if (!detailed_info && !impact && !sources) {
+  // Procesar sources para manejar tanto array como string
+  const processedSources = sources ? 
+    (Array.isArray(sources) ? sources : JSON.parse(sources || '[]')) : 
+    []
+
+  if (!detailed_info && !impact && processedSources.length === 0) {
     return null
   }
 
@@ -65,11 +70,11 @@ export function EphemerisDetails({
             </Card>
           )}
 
-          {sources && sources.length > 0 && (
+          {processedSources.length > 0 && (
             <Card className="bg-card border-border p-4">
               <div className="text-accent mb-2 font-mono text-sm">[FUENTES]</div>
               <div className="space-y-2">
-                {sources.map((source, index) => (
+                {processedSources.map((source, index) => (
                   <div key={index} className="flex items-center space-x-2">
                     <ExternalLink className="w-3 h-3 text-muted-foreground" />
                     <a
