@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Users, Eye, TrendingUp, Globe } from "lucide-react"
+import { Users, Eye, TrendingUp, Globe, ExternalLink } from "lucide-react"
 
 interface VisitorStats {
   totalVisitors: number
@@ -18,32 +18,52 @@ export function VisitorAnalytics() {
   const [stats, setStats] = useState<VisitorStats | null>(null)
   const [loading, setLoading] = useState(true)
   const [isExpanded, setIsExpanded] = useState(false)
+  const [isProduction, setIsProduction] = useState(false)
 
   useEffect(() => {
-    // Simular datos de analytics (en producción esto vendría de Vercel Analytics)
-    const mockStats: VisitorStats = {
-      totalVisitors: 1247,
-      todayVisitors: 23,
-      uniqueVisitors: 892,
-      pageViews: 3456,
-      topCountries: [
-        { country: "México", visitors: 456 },
-        { country: "Estados Unidos", visitors: 234 },
-        { country: "España", visitors: 123 },
-        { country: "Colombia", visitors: 89 },
-        { country: "Argentina", visitors: 67 }
-      ],
-      topPages: [
-        { page: "/", views: 2345 },
-        { page: "/api/generate-ephemeris", views: 1111 }
-      ]
-    }
+    // Detectar si estamos en producción
+    const isProd = window.location.hostname.includes('vercel.app')
+    setIsProduction(isProd)
 
-    // Simular carga
-    setTimeout(() => {
-      setStats(mockStats)
+    if (isProd) {
+      // En producción, mostrar datos reales de Vercel Analytics
+      // Por ahora, mostrar datos simulados hasta que Vercel Analytics se active
+      const realStats: VisitorStats = {
+        totalVisitors: 0, // Se actualizará cuando Vercel Analytics esté activo
+        todayVisitors: 0,
+        uniqueVisitors: 0,
+        pageViews: 0,
+        topCountries: [],
+        topPages: []
+      }
+      
+      setStats(realStats)
       setLoading(false)
-    }, 1000)
+    } else {
+      // En desarrollo, mostrar datos simulados
+      const mockStats: VisitorStats = {
+        totalVisitors: 1247,
+        todayVisitors: 23,
+        uniqueVisitors: 892,
+        pageViews: 3456,
+        topCountries: [
+          { country: "México", visitors: 456 },
+          { country: "Estados Unidos", visitors: 234 },
+          { country: "España", visitors: 123 },
+          { country: "Colombia", visitors: 89 },
+          { country: "Argentina", visitors: 67 }
+        ],
+        topPages: [
+          { page: "/", views: 2345 },
+          { page: "/api/generate-ephemeris", views: 1111 }
+        ]
+      }
+
+      setTimeout(() => {
+        setStats(mockStats)
+        setLoading(false)
+      }, 1000)
+    }
   }, [])
 
   if (loading) {
@@ -74,35 +94,71 @@ export function VisitorAnalytics() {
       </div>
       
       <div className="text-muted-foreground text-sm space-y-1">
-        <div className="flex items-center space-x-2">
-          <Users className="w-3 h-3" />
-          <span>Hoy: {stats.todayVisitors} visitantes</span>
-        </div>
-        <div className="flex items-center space-x-2">
-          <Eye className="w-3 h-3" />
-          <span>Total: {stats.totalVisitors.toLocaleString()}</span>
-        </div>
-        
-        {isExpanded && (
-          <div className="mt-3 pt-3 border-t border-border space-y-2">
+        {isProduction ? (
+          <>
             <div className="flex items-center space-x-2">
-              <TrendingUp className="w-3 h-3" />
-              <span>Únicos: {stats.uniqueVisitors.toLocaleString()}</span>
+              <Users className="w-3 h-3" />
+              <span>Hoy: {stats?.todayVisitors || 0} visitantes</span>
             </div>
             <div className="flex items-center space-x-2">
-              <Globe className="w-3 h-3" />
-              <span>Páginas: {stats.pageViews.toLocaleString()}</span>
+              <Eye className="w-3 h-3" />
+              <span>Total: {stats?.totalVisitors || 0}</span>
+            </div>
+            <div className="text-xs text-accent mt-2">
+              {stats?.totalVisitors === 0 ? 
+                "Analytics activándose..." : 
+                "Datos en tiempo real"
+              }
+            </div>
+            {isExpanded && (
+              <div className="mt-3 pt-3 border-t border-border">
+                <div className="text-xs text-accent mb-2">
+                  <a 
+                    href="https://vercel.com/dashboard" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-1 text-green-400 hover:text-green-300 underline"
+                  >
+                    <ExternalLink className="w-3 h-3" />
+                    <span>Ver analytics completos en Vercel</span>
+                  </a>
+                </div>
+              </div>
+            )}
+          </>
+        ) : (
+          <>
+            <div className="flex items-center space-x-2">
+              <Users className="w-3 h-3" />
+              <span>Hoy: {stats?.todayVisitors || 0} visitantes</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <Eye className="w-3 h-3" />
+              <span>Total: {stats?.totalVisitors?.toLocaleString() || 0}</span>
             </div>
             
-            <div className="mt-3">
-              <div className="text-xs text-accent mb-1">Top países:</div>
-              {stats.topCountries.slice(0, 3).map((country, index) => (
-                <div key={index} className="text-xs text-muted-foreground">
-                  {country.country}: {country.visitors}
+            {isExpanded && (
+              <div className="mt-3 pt-3 border-t border-border space-y-2">
+                <div className="flex items-center space-x-2">
+                  <TrendingUp className="w-3 h-3" />
+                  <span>Únicos: {stats?.uniqueVisitors?.toLocaleString() || 0}</span>
                 </div>
-              ))}
-            </div>
-          </div>
+                <div className="flex items-center space-x-2">
+                  <Globe className="w-3 h-3" />
+                  <span>Páginas: {stats?.pageViews?.toLocaleString() || 0}</span>
+                </div>
+                
+                <div className="mt-3">
+                  <div className="text-xs text-accent mb-1">Top países:</div>
+                  {stats?.topCountries?.slice(0, 3).map((country, index) => (
+                    <div key={index} className="text-xs text-muted-foreground">
+                      {country.country}: {country.visitors}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </>
         )}
       </div>
     </Card>
