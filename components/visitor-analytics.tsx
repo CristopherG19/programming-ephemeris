@@ -79,7 +79,7 @@ export function VisitorAnalytics() {
 
   if (!stats) return null
 
-  // En producción, si no hay datos, mostrar un componente más simple
+  // En producción, si no hay datos, mostrar un componente más informativo
   if (isProduction && stats.totalVisitors === 0) {
     return (
       <Card className="bg-card border-border p-4 terminal-container">
@@ -88,6 +88,9 @@ export function VisitorAnalytics() {
           <div className="flex items-center space-x-2">
             <Users className="w-3 h-3" />
             <span>Visitantes: 0</span>
+          </div>
+          <div className="text-xs text-accent mt-1">
+            Analytics activándose...
           </div>
         </div>
       </Card>
@@ -119,12 +122,16 @@ export function VisitorAnalytics() {
               <Eye className="w-3 h-3" />
               <span>Total: {stats?.totalVisitors || 0}</span>
             </div>
-            {stats?.totalVisitors > 0 && (
+            {stats?.totalVisitors > 0 ? (
               <div className="text-xs text-accent mt-2">
                 Datos en tiempo real
               </div>
+            ) : (
+              <div className="text-xs text-muted-foreground mt-2">
+                Los datos aparecerán con tráfico real
+              </div>
             )}
-            {isExpanded && stats.totalVisitors > 0 && (
+            {isExpanded && (
               <div className="mt-3 pt-3 border-t border-border">
                 <div className="text-xs text-accent mb-2">
                   <a 
@@ -134,7 +141,7 @@ export function VisitorAnalytics() {
                     className="flex items-center space-x-1 text-green-400 hover:text-green-300 underline"
                   >
                     <ExternalLink className="w-3 h-3" />
-                    <span>Ver analytics completos en Vercel</span>
+                    <span>Ver analytics en Vercel</span>
                   </a>
                 </div>
               </div>
