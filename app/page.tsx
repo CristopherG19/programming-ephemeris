@@ -34,9 +34,9 @@ export default function Home() {
     const updateTime = () => {
       const now = new Date()
       const timeString = now.toLocaleTimeString("es-ES", {
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
       })
       setCurrentTime(timeString)
     }
@@ -53,7 +53,7 @@ export default function Home() {
   const loadTodayEphemeris = async () => {
     try {
       setLoading(true)
-      setError(null) // Limpiar errores previos
+      setError(null)
       
       const response = await fetch('/api/generate-ephemeris')
       
@@ -65,27 +65,13 @@ export default function Home() {
       
       if (data.success && data.data) {
         setTodayEphemeris(data.data)
-        setError(null) // Sin errores si se carga correctamente
+        setError(null)
       } else {
-        // Si no hay efeméride en la base de datos, usar una por defecto
-        setTodayEphemeris({
-          id: 0,
-          day: 27,
-          month: 9,
-          year: 1969,
-          event: "Se envía el primer mensaje a través de ARPANET entre UCLA y Stanford, marcando el nacimiento de Internet.",
-          display_date: "1969-09-27",
-          historical_day: 27,
-          historical_month: 9,
-          historical_year: 1969,
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString()
-        })
-        setError(null) // No es un error, es el modo offline
+        throw new Error('No se pudo obtener la efeméride')
       }
     } catch (err) {
       console.error('Error cargando efeméride:', err)
-      setError('Modo offline - Usando efeméride de respaldo')
+      setError('Error de conexión - Verificando...')
       
       // Efeméride de respaldo
       setTodayEphemeris({
@@ -162,7 +148,7 @@ export default function Home() {
               </div>
               <div className="text-xl text-gray-300 mb-6 leading-relaxed">
                 {todayEphemeris.event}
-              </div>
+            </div>
               <div className="text-sm text-gray-500 font-mono">
                 {">"} Presiona F5 para actualizar o espera hasta mañana para la siguiente efeméride
               </div>
@@ -175,7 +161,7 @@ export default function Home() {
               sources={todayEphemeris.sources}
               category={todayEphemeris.category}
             />
-          </Card>
+        </Card>
         )}
 
         {/* Información del sistema */}

@@ -160,12 +160,8 @@ export class AIEphemerisGenerator {
         .single()
 
       if (error) {
-        console.error('Error obteniendo efeméride:', error)
-        
         // Si no existe efeméride para esta fecha, generar una nueva
-        console.log('Generando nueva efeméride para la fecha...')
-        const newEphemeris = await this.generateEphemerisForDate(date)
-        return newEphemeris
+        return await this.generateEphemerisForDate(date)
       }
 
       return data
@@ -242,25 +238,19 @@ export class AIEphemerisGenerator {
     const month = date.getMonth() + 1
     const year = date.getFullYear()
 
-    // Base de datos de efemérides históricas reales para diferentes fechas
+    // Buscar eventos históricos reales para esta fecha
     const historicalEvents = this.getHistoricalEventsForDate(day, month)
     
     if (historicalEvents.length > 0) {
-      // Seleccionar un evento histórico aleatorio
       const randomEvent = historicalEvents[Math.floor(Math.random() * historicalEvents.length)]
-      
-      // Insertar en la base de datos
-      const success = await this.insertEphemeris(randomEvent)
-      if (success) {
-        return randomEvent
-      }
+      await this.insertEphemeris(randomEvent)
+      return randomEvent
     }
 
-    // Si no hay eventos históricos, generar uno genérico
+    // Generar evento genérico si no hay históricos
     const genericEvent = this.generateGenericEvent(day, month, year)
-    const success = await this.insertEphemeris(genericEvent)
-    
-    return success ? genericEvent : null
+    await this.insertEphemeris(genericEvent)
+    return genericEvent
   }
 
   private getHistoricalEventsForDate(day: number, month: number): EphemerisData[] {
