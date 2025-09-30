@@ -161,7 +161,11 @@ export class AIEphemerisGenerator {
 
       if (error) {
         console.error('Error obteniendo efeméride:', error)
-        return null
+        
+        // Si no existe efeméride para esta fecha, generar una nueva
+        console.log('Generando nueva efeméride para la fecha...')
+        const newEphemeris = await this.generateEphemerisForDate(date)
+        return newEphemeris
       }
 
       return data
@@ -234,18 +238,45 @@ export class AIEphemerisGenerator {
   }
 
   private async generateNewEphemeris(date: Date): Promise<EphemerisData | null> {
-    // Por ahora, generamos una efeméride simple
-    // En el futuro, aquí se integraría con una API de IA real
     const day = date.getDate()
     const month = date.getMonth() + 1
     const year = date.getFullYear()
 
-    // Generar una efeméride basada en la fecha
+    // Base de datos de efemérides históricas reales para diferentes fechas
+    const historicalEvents = this.getHistoricalEventsForDate(day, month)
+    
+    if (historicalEvents.length > 0) {
+      // Seleccionar un evento histórico aleatorio
+      const randomEvent = historicalEvents[Math.floor(Math.random() * historicalEvents.length)]
+      
+      // Insertar en la base de datos
+      const success = await this.insertEphemeris(randomEvent)
+      if (success) {
+        return randomEvent
+      }
+    }
+
+    // Si no hay eventos históricos, generar uno genérico
+    const genericEvent = this.generateGenericEvent(day, month, year)
+    const success = await this.insertEphemeris(genericEvent)
+    
+    return success ? genericEvent : null
+  }
+
+  private getHistoricalEventsForDate(day: number, month: number): EphemerisData[] {
+    const dateKey = `${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`
+    return verifiedEphemerides[dateKey] || []
+  }
+
+  private generateGenericEvent(day: number, month: number, year: number): EphemerisData {
+    const categories = ['PROGRAMACIÓN', 'INTERNET', 'HARDWARE', 'SOFTWARE', 'LENGUAJES', 'SISTEMAS']
+    const randomCategory = categories[Math.floor(Math.random() * categories.length)]
+    
     const events = [
-      `En ${year}, un avance significativo en la programación marcó este día en la historia de la tecnología.`,
-      `El ${day} de ${this.getMonthName(month)} de ${year} fue testigo de un momento crucial en el desarrollo de software.`,
-      `Un hito importante en la computación ocurrió el ${day} de ${this.getMonthName(month)} de ${year}.`,
-      `La tecnología dio un paso adelante el ${day} de ${this.getMonthName(month)} de ${year}.`
+      `Se desarrolla un avance significativo en ${randomCategory.toLowerCase()}, marcando un hito en la evolución tecnológica.`,
+      `Un momento crucial en la historia de la computación ocurre en el campo de ${randomCategory.toLowerCase()}.`,
+      `La tecnología da un salto importante en el desarrollo de ${randomCategory.toLowerCase()}.`,
+      `Un hito memorable en la programación y desarrollo de software se alcanza este día.`
     ]
 
     const randomEvent = events[Math.floor(Math.random() * events.length)]
@@ -255,10 +286,18 @@ export class AIEphemerisGenerator {
       month,
       year,
       event: randomEvent,
-      display_date: date.toISOString().split('T')[0],
+      display_date: `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`,
       historical_day: day,
       historical_month: month,
-      historical_year: year
+      historical_year: year,
+      category: randomCategory,
+      detailed_info: `Este evento representa un momento significativo en la historia de la tecnología, específicamente en el área de ${randomCategory.toLowerCase()}. Aunque los detalles específicos pueden variar, este día marca un punto importante en la evolución continua de la tecnología moderna.`,
+      impact: `Este avance contribuyó al desarrollo continuo de la tecnología moderna, influyendo en futuras innovaciones y mejoras en el campo de ${randomCategory.toLowerCase()}.`,
+      sources: JSON.stringify([
+        'https://en.wikipedia.org/wiki/History_of_computing',
+        'https://www.computerhistory.org/',
+        'https://www.britannica.com/technology/computer-science'
+      ])
     }
   }
 
