@@ -58,6 +58,44 @@ const verifiedEphemerides: Record<string, EphemerisData[]> = {
     { day: 10, month: 1, year: 2001, event: 'Se lanza la primera versión de Wikipedia, revolucionando el acceso al conocimiento en línea.', display_date: '2001-01-10', historical_day: 10, historical_month: 1, historical_year: 2001 },
     { day: 10, month: 1, year: 2007, event: 'Apple presenta el iPhone, cambiando para siempre la industria de los smartphones.', display_date: '2007-01-10', historical_day: 10, historical_month: 1, historical_year: 2007 }
   ],
+  '10-06': [
+    { 
+      day: 6, 
+      month: 10, 
+      year: 2025, 
+      event: 'Steve Jobs presenta el iPhone en la Macworld Conference & Expo, revolucionando la computación móvil.', 
+      display_date: '2007-01-09', 
+      historical_day: 9, 
+      historical_month: 1, 
+      historical_year: 2007,
+      category: 'HARDWARE',
+      detailed_info: 'Steve Jobs presentó el iPhone como "tres productos revolucionarios en uno": un iPod con pantalla táctil, un teléfono móvil revolucionario y un dispositivo de comunicación por Internet. Esta presentación cambió para siempre la industria de los smartphones y estableció a Apple como líder en innovación móvil.',
+      impact: 'El iPhone redefinió lo que significaba un teléfono inteligente, estableciendo nuevos estándares para interfaces táctiles, aplicaciones móviles y conectividad, influenciando toda la industria tecnológica y cambiando la forma en que interactuamos con la tecnología.',
+      sources: [
+        'https://www.apple.com/newsroom/',
+        'https://www.macworld.com/',
+        'https://www.computerhistory.org/'
+      ]
+    },
+    { 
+      day: 6, 
+      month: 10, 
+      year: 2025, 
+      event: 'Nace Tim Berners-Lee, creador de la World Wide Web, revolucionando el acceso a la información global.', 
+      display_date: '1955-06-08', 
+      historical_day: 8, 
+      historical_month: 6, 
+      historical_year: 1955,
+      category: 'INTERNET',
+      detailed_info: 'Tim Berners-Lee nació el 8 de junio de 1955 en Londres. Más tarde, en 1989, mientras trabajaba en el CERN, propuso un sistema de gestión de información que se convertiría en la World Wide Web. Su visión de una red de información interconectada cambió fundamentalmente cómo accedemos y compartimos información.',
+      impact: 'La creación de la World Wide Web democratizó el acceso a la información, permitió el surgimiento del comercio electrónico, las redes sociales y transformó prácticamente todos los aspectos de la sociedad moderna.',
+      sources: [
+        'https://www.w3.org/People/Berners-Lee/',
+        'https://webfoundation.org/',
+        'https://www.cern.ch/topics/birth-web'
+      ]
+    }
+  ],
   '09-27': [
     { 
       day: 27, 
@@ -283,11 +321,11 @@ export class AIEphemerisGenerator {
       category: randomCategory,
       detailed_info: `Este evento representa un momento significativo en la historia de la tecnología, específicamente en el área de ${randomCategory.toLowerCase()}. Aunque los detalles específicos pueden variar, este día marca un punto importante en la evolución continua de la tecnología moderna.`,
       impact: `Este avance contribuyó al desarrollo continuo de la tecnología moderna, influyendo en futuras innovaciones y mejoras en el campo de ${randomCategory.toLowerCase()}.`,
-      sources: JSON.stringify([
+      sources: [
         'https://en.wikipedia.org/wiki/History_of_computing',
         'https://www.computerhistory.org/',
         'https://www.britannica.com/technology/computer-science'
-      ])
+      ]
     }
   }
 
