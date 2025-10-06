@@ -155,6 +155,66 @@ const verifiedEphemerides: Record<string, EphemerisData[]> = {
         'https://en.wikipedia.org/wiki/Nokia'
       ]
     }
+  ],
+  '10-08': [
+    { 
+      day: 8, 
+      month: 10, 
+      year: 2025, 
+      event: 'Se lanza Microsoft Windows 98, estableciendo un nuevo estándar en sistemas operativos para consumidores.', 
+      display_date: '1998-10-08', 
+      historical_day: 8, 
+      historical_month: 10, 
+      historical_year: 1998,
+      category: 'SISTEMAS',
+      detailed_info: 'El 8 de octubre de 1998, Microsoft lanza Windows 98, una actualización significativa de Windows 95. Esta versión introdujo mejoras importantes como mejor soporte para hardware, Internet Explorer integrado, y mayor estabilidad. Windows 98 se convirtió en uno de los sistemas operativos más populares de la era pre-Windows XP.',
+      impact: 'Windows 98 popularizó el uso de Internet en los hogares, estableció estándares para la integración web en sistemas operativos y preparó el camino para la era de la computación conectada que definiría los años 2000.',
+      sources: [
+        'https://www.microsoft.com/en-us/windows/windows-98',
+        'https://www.computerhistory.org/timeline/software/',
+        'https://en.wikipedia.org/wiki/Windows_98'
+      ]
+    }
+  ],
+  '10-09': [
+    { 
+      day: 9, 
+      month: 10, 
+      year: 2025, 
+      event: 'Se funda Canonical Ltd., empresa creadora de Ubuntu Linux, democratizando el acceso a sistemas operativos libres.', 
+      display_date: '2004-10-09', 
+      historical_day: 9, 
+      historical_month: 10, 
+      historical_year: 2004,
+      category: 'EMPRESAS',
+      detailed_info: 'El 9 de octubre de 2004, Mark Shuttleworth funda Canonical Ltd. con la misión de hacer Linux accesible para usuarios cotidianos. La empresa se dedicaría al desarrollo de Ubuntu, una distribución Linux basada en Debian que se caracterizaría por su facilidad de uso y instalación.',
+      impact: 'Ubuntu se convirtió en una de las distribuciones Linux más populares del mundo, introduciendo a millones de usuarios al software libre y estableciendo nuevos estándares de usabilidad en sistemas operativos open source.',
+      sources: [
+        'https://canonical.com/about',
+        'https://ubuntu.com/about',
+        'https://en.wikipedia.org/wiki/Canonical_(company)'
+      ]
+    }
+  ],
+  '10-10': [
+    { 
+      day: 10, 
+      month: 10, 
+      year: 2025, 
+      event: 'Se anuncia el proyecto GNU por Richard Stallman, estableciendo las bases del movimiento de software libre.', 
+      display_date: '1985-10-10', 
+      historical_day: 10, 
+      historical_month: 10, 
+      historical_year: 1985,
+      category: 'SOFTWARE',
+      detailed_info: 'El 10 de octubre de 1985, Richard Stallman publica el Manifiesto GNU, anunciando oficialmente el proyecto para crear un sistema operativo completamente libre compatible con Unix. Este proyecto estableció los principios fundamentales del software libre y más tarde daría origen a la Free Software Foundation.',
+      impact: 'El proyecto GNU sentó las bases filosóficas y técnicas del movimiento de software libre, influyendo en el desarrollo de Linux, la creación de miles de herramientas libres y estableciendo los principios que rigen gran parte del software moderno.',
+      sources: [
+        'https://www.gnu.org/gnu/manifesto.html',
+        'https://www.fsf.org/about/',
+        'https://en.wikipedia.org/wiki/GNU_Project'
+      ]
+    }
   ]
   // Agregar más fechas según sea necesario
 }
