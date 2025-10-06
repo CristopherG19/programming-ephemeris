@@ -101,18 +101,58 @@ const verifiedEphemerides: Record<string, EphemerisData[]> = {
       day: 27, 
       month: 9, 
       year: 1969, 
-      event: 'Se envía el primer mensaje a través de ARPANET entre UCLA y Stanford, marcando el nacimiento de Internet.', 
-      display_date: '1969-09-27', 
+      event: 'Se funda la empresa Oracle Corporation, que se convertiría en líder mundial en sistemas de gestión de bases de datos.', 
+      display_date: '1977-09-27', 
       historical_day: 27, 
       historical_month: 9, 
-      historical_year: 1969,
-      category: 'INTERNET',
-      detailed_info: 'El 29 de octubre de 1969, a las 22:30 horas, el estudiante de UCLA Charley Kline intentó enviar el mensaje "LOGIN" a la computadora de Stanford. Aunque solo se transmitieron las letras "LO" antes de que el sistema se colapsara, este momento histórico marcó el nacimiento de la red que eventualmente se convertiría en Internet. ARPANET (Advanced Research Projects Agency Network) fue desarrollada por el Departamento de Defensa de Estados Unidos como una red de comunicación descentralizada que pudiera sobrevivir a ataques nucleares.',
-      impact: 'Este evento sentó las bases para la revolución digital del siglo XXI, permitiendo la comunicación global instantánea, el comercio electrónico, las redes sociales y la transformación de prácticamente todos los aspectos de la vida moderna.',
+      historical_year: 1977,
+      category: 'EMPRESAS',
+      detailed_info: 'El 27 de septiembre de 1977, Larry Ellison, Bob Miner y Ed Oates fundaron Software Development Laboratories (SDL), que más tarde se convertiría en Oracle Corporation. La empresa pionera en el desarrollo de sistemas de gestión de bases de datos relacionales, revolucionando cómo las organizaciones almacenan y gestionan información.',
+      impact: 'Oracle se convirtió en una de las empresas de software más grandes del mundo, estableciendo estándares para bases de datos relacionales y sistemas empresariales que siguen siendo fundamentales en la informática moderna.',
       sources: [
-        'https://www.darpa.mil/about-us/timeline/arpanet',
-        'https://www.internethalloffame.org/internet-history/birth-internet',
-        'https://www.computerhistory.org/internethistory/1960s/'
+        'https://www.oracle.com/corporate/history/',
+        'https://www.computerhistory.org/timeline/software/',
+        'https://en.wikipedia.org/wiki/Oracle_Corporation'
+      ]
+    }
+  ],
+  '10-05': [
+    { 
+      day: 5, 
+      month: 10, 
+      year: 2025, 
+      event: 'Steve Jobs fallece a los 56 años, dejando un legado revolucionario en la industria tecnológica.', 
+      display_date: '2011-10-05', 
+      historical_day: 5, 
+      historical_month: 10, 
+      historical_year: 2011,
+      category: 'HISTORIA',
+      detailed_info: 'El 5 de octubre de 2011, Steve Jobs, cofundador y CEO de Apple, falleció en Palo Alto, California, tras una larga batalla contra el cáncer. Su muerte marcó el fin de una era en la tecnología, habiendo revolucionado múltiples industrias con productos como el Macintosh, iPod, iPhone y iPad.',
+      impact: 'La muerte de Jobs representó una pérdida incalculable para la industria tecnológica. Su filosofía de diseño, innovación y perfección en los productos continúa influyendo en Apple y en toda la industria tecnológica hasta hoy.',
+      sources: [
+        'https://www.apple.com/stevejobs/',
+        'https://www.computerhistory.org/fellowawards/hall/steve-jobs/',
+        'https://en.wikipedia.org/wiki/Steve_Jobs'
+      ]
+    }
+  ],
+  '10-07': [
+    { 
+      day: 7, 
+      month: 10, 
+      year: 2025, 
+      event: 'Se funda Nokia, que se convertiría en líder mundial en telecomunicaciones y telefonía móvil.', 
+      display_date: '1865-10-07', 
+      historical_day: 7, 
+      historical_month: 10, 
+      historical_year: 1865,
+      category: 'EMPRESAS',
+      detailed_info: 'El 7 de octubre de 1865, Fredrik Idestam fundó Nokia como una empresa de papel en Tampere, Finlandia. La empresa evolucionó a lo largo de más de un siglo, transformándose de una fábrica de papel a una empresa de caucho, y finalmente a líder mundial en telecomunicaciones y telefonía móvil en los años 90 y 2000.',
+      impact: 'Nokia dominó el mercado mundial de teléfonos móviles durante décadas, estableciendo estándares en telecomunicaciones GSM y siendo pionera en la conectividad móvil que preparó el camino para los smartphones modernos.',
+      sources: [
+        'https://www.nokia.com/about-us/company/our-story/',
+        'https://www.computerhistory.org/timeline/networking-the-web/',
+        'https://en.wikipedia.org/wiki/Nokia'
       ]
     }
   ]
