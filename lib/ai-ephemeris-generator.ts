@@ -63,36 +63,36 @@ const verifiedEphemerides: Record<string, EphemerisData[]> = {
       day: 6, 
       month: 10, 
       year: 2025, 
-      event: 'Steve Jobs presenta el iPhone en la Macworld Conference & Expo, revolucionando la computación móvil.', 
-      display_date: '2007-01-09', 
-      historical_day: 9, 
-      historical_month: 1, 
-      historical_year: 2007,
-      category: 'HARDWARE',
-      detailed_info: 'Steve Jobs presentó el iPhone como "tres productos revolucionarios en uno": un iPod con pantalla táctil, un teléfono móvil revolucionario y un dispositivo de comunicación por Internet. Esta presentación cambió para siempre la industria de los smartphones y estableció a Apple como líder en innovación móvil.',
-      impact: 'El iPhone redefinió lo que significaba un teléfono inteligente, estableciendo nuevos estándares para interfaces táctiles, aplicaciones móviles y conectividad, influenciando toda la industria tecnológica y cambiando la forma en que interactuamos con la tecnología.',
+      event: 'Se lanza Debian GNU/Linux 1.3, estableciendo uno de los sistemas operativos más estables y utilizados en servidores.', 
+      display_date: '1997-10-06', 
+      historical_day: 6, 
+      historical_month: 10, 
+      historical_year: 1997,
+      category: 'SISTEMAS',
+      detailed_info: 'El 6 de octubre de 1997, se lanzó Debian GNU/Linux 1.3, conocido como "Bo". Esta distribución estableció estándares importantes para la estabilidad y gestión de paquetes en sistemas Linux. Debian se caracterizó por su compromiso con el software libre y su sistema de gestión de paquetes APT, que más tarde influenciaría muchas otras distribuciones.',
+      impact: 'Debian se convirtió en la base de muchas distribuciones populares como Ubuntu, y estableció estándares para la gestión de paquetes y estabilidad en sistemas Linux. Su influencia se extiende a millones de servidores y sistemas en todo el mundo.',
       sources: [
-        'https://www.apple.com/newsroom/',
-        'https://www.macworld.com/',
-        'https://www.computerhistory.org/'
+        'https://www.debian.org/releases/hamm/',
+        'https://wiki.debian.org/DebianHistory',
+        'https://www.linux.org/threads/debian-history.4223/'
       ]
     },
     { 
       day: 6, 
       month: 10, 
       year: 2025, 
-      event: 'Nace Tim Berners-Lee, creador de la World Wide Web, revolucionando el acceso a la información global.', 
-      display_date: '1955-06-08', 
-      historical_day: 8, 
-      historical_month: 6, 
-      historical_year: 1955,
+      event: 'Se funda Excite, uno de los primeros motores de búsqueda y portales web, precursor de Google y Yahoo.', 
+      display_date: '1993-10-06', 
+      historical_day: 6, 
+      historical_month: 10, 
+      historical_year: 1993,
       category: 'INTERNET',
-      detailed_info: 'Tim Berners-Lee nació el 8 de junio de 1955 en Londres. Más tarde, en 1989, mientras trabajaba en el CERN, propuso un sistema de gestión de información que se convertiría en la World Wide Web. Su visión de una red de información interconectada cambió fundamentalmente cómo accedemos y compartimos información.',
-      impact: 'La creación de la World Wide Web democratizó el acceso a la información, permitió el surgimiento del comercio electrónico, las redes sociales y transformó prácticamente todos los aspectos de la sociedad moderna.',
+      detailed_info: 'El 6 de octubre de 1993, se funda Excite como proyecto universitario en Stanford. Originalmente llamado "Architext", fue uno de los primeros motores de búsqueda que utilizaba análisis estadístico para clasificar la relevancia de las páginas web. Excite fue pionero en el concepto de portal web, combinando búsqueda con contenido y servicios.',
+      impact: 'Excite sentó las bases para los modernos motores de búsqueda y el concepto de portal web. Sus innovaciones en algoritmos de búsqueda y clasificación de contenido influyeron directamente en el desarrollo posterior de Google, Yahoo y otros buscadores.',
       sources: [
-        'https://www.w3.org/People/Berners-Lee/',
-        'https://webfoundation.org/',
-        'https://www.cern.ch/topics/birth-web'
+        'https://web.archive.org/web/19961220154555/http://www.excite.com/',
+        'https://www.computerhistory.org/timeline/networking-the-web/',
+        'https://en.wikipedia.org/wiki/Excite'
       ]
     }
   ],
